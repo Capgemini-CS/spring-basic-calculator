@@ -12,4 +12,11 @@ public class AdditionService implements Operation {
         Logger.info("Add {} and {}.", firstNumber, secondNumber);
         return firstNumber + secondNumber;
     }
+
+    @Override
+    public String getOperationSymbol() {
+        return "+";
+    }
+
+
 }
