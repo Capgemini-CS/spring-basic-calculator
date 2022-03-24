@@ -2,8 +2,9 @@ package org.calculator.service.input;
 
 import org.calculator.domain.ConsoleInput;
 import org.calculator.domain.InputValueInterface;
-import org.calculator.domain.validation.InputValidation;
+import org.calculator.service.validation.InputValidation;
 import org.calculator.exceptions.IncorrectInputException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tinylog.Logger;
 
@@ -12,9 +13,17 @@ import java.util.Scanner;
 @Service
 public class ConsoleInputService implements InputValueInterface {
 
+    @Autowired
+    private final InputValidation inputValidation;
+
     private final ConsoleInput consoleInput = new ConsoleInput();
 
     private static Scanner scanner = new Scanner(System.in);
+
+
+    public ConsoleInputService(InputValidation inputValidation){
+        this.inputValidation = inputValidation;
+    }
 
     @Override
     public int getInputValueFirstNumber() throws IncorrectInputException {
@@ -32,7 +41,7 @@ public class ConsoleInputService implements InputValueInterface {
     public String getInputValueOperator() throws IncorrectInputException {
         consoleInput.setOperator(scanner.next());
         try{
-            if(!InputValidation.valueIsOneOfTheOperators(consoleInput.getOperator())){
+            if(!inputValidation.valueIsOneOfTheOperators(consoleInput.getOperator())){
                 return null;
             }
         }catch (IncorrectInputException e){

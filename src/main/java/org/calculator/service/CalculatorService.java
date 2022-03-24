@@ -24,6 +24,7 @@ public class CalculatorService implements CalculatorInterface{
         this.showInConsoleService = showInConsoleService;
         this.consoleInputService = consoleInputService;
         this.operation = operation;
+
     }
 
     @Override
@@ -35,7 +36,7 @@ public class CalculatorService implements CalculatorInterface{
         showInConsoleService.showOutput(operationResult);
     }
 
-    public  float getOperationResult(int firstNumber, int secondNumber, String operator)  {
+    public  float getOperationResult(int firstNumber, int secondNumber, String operator) {
         float result = 0;
         switch (operator) {
             case "+":
