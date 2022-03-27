@@ -30,7 +30,7 @@ public class CalculatorService implements CalculatorInterface{
 
     @Override
     public void executeOperation() throws IncorrectInputException {
-        Logger.info("Executing operation..");
+        Logger.info("Executing operation...");
         float operationResult  = getOperationResult(consoleInputService.getInputValueFirstNumber(),
                 consoleInputService.getInputValueSecondNumber(),
                 consoleInputService.getInputValueOperator());
